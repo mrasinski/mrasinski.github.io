@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  const apiRoot = 'https://still-harbor-11119.herokuapp.com/v1/tasks/';
+  const apiRoot = 'https://still-harbor-11119.herokuapp.com/v1/';
   const trelloApiRoot = 'https://still-harbor-11119.herokuapp.com/v1/trello/';
   const datatableRowTemplate = $('[data-datatable-row-template]').children()[0];
   const $tasksContainer = $('[data-tasks-container]');
@@ -125,7 +125,7 @@ $(document).ready(function() {
     var taskTitle = $(this).find('[name="title"]').val();
     var taskContent = $(this).find('[name="content"]').val();
 
-    var requestUrl = apiRoot + 'createTask';
+    var requestUrl = apiRoot + 'tasks';
 
     $.ajax({
       url: requestUrl,
@@ -166,7 +166,7 @@ $(document).ready(function() {
   }
 
   function handleCardCreationRequest(event) {
-    var requestUrl = trelloApiRoot + 'createTrelloCard';
+    var requestUrl = trelloApiRoot + 'cards';
     var $relatedTaskRow = $(event.target).parents('[data-task-id]');
     var relatedTaskId = $relatedTaskRow.attr('data-task-id');
     var relatedTask = availableTasks[relatedTaskId];
